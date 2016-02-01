@@ -1,0 +1,42 @@
+<main>
+  <div class="row">
+
+    <!-- About olympusbook -->
+    <section class="info col-sm-7">
+      <h2>Connect with all your friends!</h2>
+      <p>
+        <i class="fa fa-camera-retro"></i>   See photos and updates in your news feed.
+      </p>
+      <p>
+        <i class="fa fa-pencil"></i>  Post your status for the world to see from your profile.
+      </p>
+      <p>
+        <i class="fa fa-users"></i>  Get in touch with your friends by "friending" them.
+      </p>
+      <p>
+        <i class="fa fa-thumbs-up"></i>  Like things because you're a positive person!
+      </p>
+    </section>
+
+    <!-- Sign-up form -->
+    <section class="sign-up col-sm-5">
+      <%= render 'form' %>
+    </section>
+  </div>
+</main>
+
+<!-- Script to populate date dropdowns -->
+<script type="text/javascript">
+$(document).ready(function(){
+  var day_container = '';
+  var year_container = '';
+  for (var i = 1; i < 32; i++){
+    day_container += '<option value="' + i + '">' + i +'</option>';
+  }
+  for (var i = 0; i < 100; i++){
+    year_container += '<option value="' + (2015-i) + '">' + (2015-i) +'</option>';
+  }
+  $('select#day').html(day_container);
+  $('select#year').html(year_container);
+});
+</script>

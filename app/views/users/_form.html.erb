@@ -1,0 +1,75 @@
+<h1>Sign Up</h1>
+<%= form_for @user do |user_fields| %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= user_fields.label :first_name, class: "sr-only" %>
+      <%# TODO: switch to first name after added to DB %>
+      <%= user_fields.text_field :email, class: 'form-control', placeholder: 'First name' %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= user_fields.label :last_name, class: "sr-only" %>
+      <%# TODO: switch to last name after added to DB %>
+      <%= user_fields.text_field :email, class: 'form-control', placeholder: 'Last name' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= user_fields.label :email, class: "sr-only" %>
+    <%# TODO: add validation %>
+    <%= user_fields.text_field :email, class: 'form-control', placeholder: 'Your email' %>
+  </div>
+  <div class="form-group">
+    <%= user_fields.label :password, class: "sr-only" %>
+    <%# TODO: add validation %>
+    <%= user_fields.password_field :password, class: 'form-control', placeholder: 'Your new password' %>
+  </div>
+  <div class="form-group">
+    <%= user_fields.label :password_confirmation, class: "sr-only" %>
+    <%# TODO: add validation %>
+    <%= user_fields.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password' %>
+  </div>
+  <%# TODO: activate remaining fields %>
+  <div class="form-group">
+    <label>Birthday</label>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <select id="month" name="month" class="form-control">
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+
+      <!-- Day and year dropdowns populated by script at end of html -->
+      <div class="col-sm-2">
+        <select class="form-control" id="day" name="day"></select>
+      </div>
+
+      <div class="col-sm-4">
+        <select class="form-control" id="year" name="year"></select>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Female
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Male
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Other
+    </label>
+  </div>
+  <button type="submit" class="btn btn-success btn-block btn-lg">Sign up!</button>
+<% end %>
