@@ -14,17 +14,17 @@
   </div>
   <div class="form-group">
     <%= user_fields.label :email, class: "sr-only" %>
-    <%# TODO: add validation %>
+    <%= field_with_errors(@user, :email) %>
     <%= user_fields.text_field :email, class: 'form-control', placeholder: 'Your email' %>
   </div>
   <div class="form-group">
     <%= user_fields.label :password, class: "sr-only" %>
-    <%# TODO: add validation %>
+    <%= field_with_errors(@user, :password) %>
     <%= user_fields.password_field :password, class: 'form-control', placeholder: 'Your new password' %>
   </div>
   <div class="form-group">
     <%= user_fields.label :password_confirmation, class: "sr-only" %>
-    <%# TODO: add validation %>
+    <%= field_with_errors(@user, :password_confirmation) %>
     <%= user_fields.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password' %>
   </div>
   <%# TODO: activate remaining fields %>
