@@ -3,13 +3,13 @@
   <div class="row">
     <div class="form-group col-sm-6">
       <%= user_fields.label :first_name, class: "sr-only" %>
-      <%# TODO: switch to first name after added to DB %>
-      <%= user_fields.text_field :email, class: 'form-control', placeholder: 'First name' %>
+      <%= field_with_errors(@user, :first_name) %>
+      <%= user_fields.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
     </div>
     <div class="form-group col-sm-6">
       <%= user_fields.label :last_name, class: "sr-only" %>
-      <%# TODO: switch to last name after added to DB %>
-      <%= user_fields.text_field :email, class: 'form-control', placeholder: 'Last name' %>
+      <%= field_with_errors(@user, :last_name) %>
+      <%= user_fields.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
     </div>
   </div>
   <div class="form-group">
@@ -29,7 +29,8 @@
   </div>
   <%# TODO: activate remaining fields %>
   <div class="form-group">
-    <label>Birthday</label>
+    <%= user_fields.label :dob, 'Birthday' %>
+    <%= field_with_errors(@user, :dob) %>
 
     <div class="row">
       <div class="col-sm-6">
@@ -60,16 +61,22 @@
     </div>
 
   </div>
+
   <div class="form-group">
-    <label class="radio-inline">
-      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Female
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Male
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Other
-    </label>
+    <%= field_with_errors(@user, :gender) %>
+    <%= user_fields.label :gender, class: 'radio-inline' do %>
+      <%= user_fields.radio_button :gender, 'female' %>
+      Female
+    <% end %>
+    <%= user_fields.label :gender, class: 'radio-inline' do %>
+      <%= user_fields.radio_button :gender, 'male' %>
+      Male
+    <% end %>
+    <%= user_fields.label :gender, class: 'radio-inline' do %>
+      <%= user_fields.radio_button :gender, 'other' %>
+      Other
+    <% end %>
   </div>
-  <button type="submit" class="btn btn-success btn-block btn-lg">Sign up!</button>
+
+  <%= user_fields.submit 'Sign up!', class: "btn btn-success btn-block btn-lg" %>
 <% end %>

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.dob = Time.new(params[:year], params[:month], params[:day]).to_date
 
     if @user.save
       sign_in(@user)
@@ -18,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :gender, :email, :password, :password_confirmation)
   end
 end

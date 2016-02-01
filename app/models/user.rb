@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :password, length: { in: 8..24 }, allow_nil: true
+  validates :first_name, :last_name, :email, :dob, :gender, presence: true
+  validates :email, uniqueness: true
+
+  GENDERS = ['male', 'female', 'other']
+  validates :gender, inclusion: { in: GENDERS }
 
   def generate_token
     begin
