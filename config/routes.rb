@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  get 'home' => 'static_pages#home'
+
+  resources :users, only: [:new, :create]
+
+  get 'home' => 'users#new'
   get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'
   get 'about' => 'static_pages#about'
   get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
-  root 'static_pages#home'
+  root 'users#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
