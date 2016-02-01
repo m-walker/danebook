@@ -1,0 +1,231 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Set up a mix-in (method) to avoid writing lots of prefixes */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/*
+ * Navbar
+ */
+
+ // Logo container in navbar
+.logo-container {
+  img {
+    width: 40px;
+    height: 40px;
+    margin-top: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+}
+
+// Seach box in navbar
+#user-search {
+  width: 100%;
+}
+
+// Fixes right margin issue
+.navbar-nav.navbar-right:last-child {
+  margin-right: 0;
+}
+
+
+
+
+/*
+ * Header - cover and profile photos as well as profile nav
+ */
+header {
+  border: 1px solid #ccc;
+}
+
+// Profile photo
+#profile-pic-container {
+  margin-top: -143px;
+
+  img {
+    max-height: 170px;
+    margin-left: 15px;
+  }
+}
+
+// Profile nav
+#profile-nav {
+  a {
+    color: #444;
+  }
+
+  .active {
+    background-color: #eee;
+  }
+}
+
+
+
+
+/*
+ * Main
+ */
+main {
+  margin-top: 20px;
+
+  .panel {
+    @include border-radius(0);
+
+    .panel-title {
+      font-size: 2em;
+    }
+
+
+
+
+    /*
+     * About/About_edit page custom style
+     */
+    .about-info {
+      line-height: 3em;
+    }
+
+    .about-words {
+      line-height: 1.67em;
+
+      p {
+        margin-bottom: 30px;
+      }
+    }
+
+    #save-profile {
+      margin: 40px 0 70px;
+    }
+
+
+
+
+    /*
+     * Friends page custom style
+     */
+    .friend-vertical-parent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 96px;
+    }
+
+
+
+
+    /*
+     * Photos page custom style
+     */
+    .photo-box {
+      margin: 10px 0;
+    }
+
+    .image {
+      position:relative;
+
+      img {
+        width:100%;
+        vertical-align:top;
+      }
+
+      &:after, &:before {
+        position:absolute;
+        opacity:0;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+      }
+
+      &:before {
+        content: attr(data-content);
+        width:100%;
+        color: white;
+        z-index:1;
+        bottom:0;
+        padding: 10px;
+        text-align:center;
+        background: rgba(0,0,0,0.5);
+        box-sizing:border-box;
+        -moz-box-sizing:border-box;
+      }
+
+      &:hover:after, &:hover:before {
+          opacity:1;
+      }
+    }
+
+
+
+
+    /*
+     * Timeline page custom style
+     */
+    .timeline-panel-heading {
+      margin: 0;
+    }
+
+    #photos-body {
+      padding-top: 20px;
+
+      .col-sm-4 {
+        margin-bottom: 20px;
+      }
+    }
+
+    .post {
+      margin-top: 20px;
+    }
+
+    .post-footer {
+      a.post-action {
+        color: #999;
+        margin-right: 20px;
+
+        &:hover {
+          text-decoration: none;
+          color: #444;
+        }
+      }
+
+      p {
+        margin-top: 20px;
+      }
+
+      .post-actions {
+        border-bottom: 1px solid #ccc;
+      }
+
+      article.comment {
+        padding-top: 20px;
+      }
+
+      textarea {
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+
+
+
+/******************************
+ * SMALLER SCREEN WIDTH styling
+ ******************************/
+@media (max-width: 990px) {
+  .photo-box {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 767px) {
+  .photo-box {
+    font-size: 1em;
+  }
+}
