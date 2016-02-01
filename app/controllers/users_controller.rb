@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      #log in
+      sign_in(@user)
       redirect_to root_url, notice: 'You successfully signed up!'
     else
       flash.now[:alert] = 'We could not sign you up. See errors below.'
