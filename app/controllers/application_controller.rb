@@ -28,4 +28,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def signed_in_user?
+    !!current_user
+  end
+  helper_method :signed_in_user?
+
+  def require_current_user
+    unless params[:id] == current_user.id.to_s
+      redirect_to root_url, alert: "You are not authorized to access."
+    end
+  end
 end

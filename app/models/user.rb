@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   GENDERS = ['male', 'female', 'other']
   validates :gender, inclusion: { in: GENDERS }
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

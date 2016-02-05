@@ -17,7 +17,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <% if @logged_in %>
+      <% if signed_in_user? %>
         <form class="navbar-form" role="search">
           <div class="form-group col-sm-6">
             <label class="sr-only">Search</label>
@@ -25,9 +25,10 @@
           </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li>Athena</li>
+          <li><%= current_user.name %></li>
         </ul>
       <% else %>
+        <%# TODO: make real sign in %>
         <form class="navbar-form navbar-right" role="sign-in">
           <div class="form-group">
             <label>Email</label>

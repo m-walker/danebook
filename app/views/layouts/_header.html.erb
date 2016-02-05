@@ -1,0 +1,46 @@
+<!-- Cover photo spans the full width of the page, displays the sample cover photo. -->
+<header>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= image_tag "cover.jpg", id: "cover-photo", class: "img-responsive", alt: "User's cover photo" %>
+    </div>
+  </div>
+  <div class="row">
+
+    <!-- Profile photo displays atop cover photo -->
+    <div id="profile-pic-container" class="col-sm-3">
+      <%= image_tag "athena.jpg", id: "profile-photo", class: "img-responsive img-thumbnail" %>
+    </div>
+
+    <!-- Links to Timeline, About, Photos, and Friends pages.  The "current" page is indicated via being grayed out.  Friends and photo counts indicated -->
+
+    <!-- TODO:  fix mobile version -->
+    <div id="profile-nav" class="col-sm-9">
+      <ul class="nav navbar-nav">
+        <li class="<%= 'active' if current_page?(timeline_path) %>">
+          <%= link_to 'Timeline', timeline_path %>
+        </li>
+        <li class="<%= 'active' if current_page?(about_path) || current_page?(about_edit_path) %>">
+          <%= link_to 'About', about_path %>
+        </li>
+        <li class="<%= 'active' if current_page?(photos_path) %>">
+          <%= link_to photos_path do %>
+            Photos <small class="text-muted">(47)</small>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(friends_path) %>">
+          <%= link_to friends_path do %>
+            Friends <small class="text-muted">(447)</small>
+          <% end %>
+        </li>
+      </ul>
+      <!-- A link to edit profile is included  -->
+      <% unless current_page?(about_edit_path) %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Edit Profile', about_edit_path %></li>
+        </ul>
+      <% end %>
+    </div>
+
+  </div> <!-- row for profile pic and nav -->
+</header>
