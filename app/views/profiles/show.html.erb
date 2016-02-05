@@ -4,8 +4,8 @@
 <main>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <% if params[:id] == current_user.id.to_s %>
-        <%= link_to 'Edit Your Profile', about_edit_path, class: "btn btn-primary btn-sm pull-right" %>
+      <% if params[:id] == current_user.profile.id.to_s %>
+        <%= link_to 'Edit Your Profile', edit_profile_path(current_user.profile), class: "btn btn-primary btn-sm pull-right" %>
       <% end %>
       <h2 class="panel-title text-center">
         About <%= @user.name %>
@@ -20,7 +20,7 @@
 
             <div class="row about-info">
               <label class="col-sm-4 text-right">Birthday</label>
-              <div class="col-sm-8"><%= @user.dob.stamp('January 1, 1980') %></div>
+              <div class="col-sm-8"><%= @profile.dob.stamp('January 1, 1980') %></div>
             </div>
 
             <div class="row about-info">

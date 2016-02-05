@@ -20,8 +20,8 @@
         <li class="<%= 'active' if current_page?(timeline_path) %>">
           <%= link_to 'Timeline', timeline_path %>
         </li>
-        <li class="<%= 'active' if current_page?(about_path) || current_page?(about_edit_path) %>">
-          <%= link_to 'About', about_path %>
+        <li class="<%= 'active' if current_page?(profile_path) || current_page?(edit_profile_path) %>">
+          <%= link_to 'About', profile_path %>
         </li>
         <li class="<%= 'active' if current_page?(photos_path) %>">
           <%= link_to photos_path do %>
@@ -35,9 +35,9 @@
         </li>
       </ul>
       <!-- A link to edit profile is included  -->
-      <% unless current_page?(about_edit_path) %>
+      <% if params[:id] == current_user.profile.id.to_s && ! (current_page?(edit_profile_path)) %>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'Edit Profile', about_edit_path %></li>
+          <li><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></li>
         </ul>
       <% end %>
     </div>

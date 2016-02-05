@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create , :show]
+  resources :users, only: [:new, :create]
+  resources :profiles, only: [:show, :edit, :update], path: :about
   resource :session, only: [:create, :destroy]
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
   get 'home' => 'users#new'
+
   get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'
-  get 'about' => 'users#show'
-  get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
   root 'users#new'
