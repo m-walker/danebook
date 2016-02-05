@@ -16,6 +16,7 @@ gem 'awesome_print'
 gem 'thin'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
+gem 'stamp'
 
 group :production do
   gem 'pg'
@@ -23,7 +24,8 @@ group :production do
 end
 
 group :development, :test do
-  gem 'byebug'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
   gem 'sqlite3'
 end
 

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create , :show]
 
   get 'home' => 'users#new'
   get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'
-  get 'about' => 'static_pages#about'
+  get 'about' => 'users#show'
   get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
