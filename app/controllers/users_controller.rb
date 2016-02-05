@@ -6,11 +6,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_profile
   end
 
   def create
     @user = User.new(user_params)
-    @user.dob = Time.new(params[:year], params[:month], params[:day]).to_date
 
     if @user.save
       sign_in(@user)
@@ -28,6 +28,12 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :email, :password, :password_confirmation)
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :password,
+      :password_confirmation,
+      { profile_attributes: [:gender, :dob] })
   end
 end

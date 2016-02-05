@@ -6,3 +6,18 @@
 body {
   padding-top: 50px;
 }
+
+#user_profile_attributes_dob_2i {
+  width: 42%;
+  display: inline-block;
+}
+
+#user_profile_attributes_dob_3i, #user_profile_attributes_dob_1i {
+  width: 23%;
+  margin-left: 5%;
+  display: inline-block;
+}
+
+#user_profile_attributes_dob_1i {
+  float: right;
+}

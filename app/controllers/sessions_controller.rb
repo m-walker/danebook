@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
       sign_in @user
       redirect_to root_url, notice: "Successfully signed in!"
     else
+      # TODO: Change to redirect to news feed
       redirect_to root_url, alert: "There was a problem signing you in. Unknown or incorrect email or password."
     end
   end
