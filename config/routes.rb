@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create , :show]
+  resource :session, only: [:create, :destroy]
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   get 'home' => 'users#new'
   get 'timeline' => 'static_pages#timeline'
