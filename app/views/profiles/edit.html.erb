@@ -1,2 +1,95 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<%= render 'layouts/header' %>
+
+<main>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title text-center">
+        Edit Profile
+      </h2>
+    </div>
+    <div class="panel-body">
+      <%= form_for @profile do |profile_fields| %>
+        <div class="row">
+          <div class="col-sm-5">
+            <section class="form-horizontal">
+              <h3>Basic Information</h3>
+              <div class="form-group">
+                <%= profile_fields.label :dob, 'Birthday', class: 'col-sm-4 control-label' %>
+                <%= field_with_errors(@profile, :dob) %>
+                <div class="col-sm-8 form-inline  ">
+                  <%= profile_fields.date_select :dob, {prompt: true, start_year: Date.today.year - 18, end_year: Date.today.year - 120, order: [:month, :day, :year]}, {class: 'form-control'} %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= profile_fields.label :college, class: 'col-sm-4 control-label' %>
+                <div class="col-sm-8">
+                  <%= profile_fields.text_field :college, class: 'form-control', placeholder: 'State University' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= profile_fields.label :hometown, class: "col-sm-4 control-label" %>
+                <div class="col-sm-8">
+                  <%= profile_fields.text_field :hometown, class: 'form-control', placeholder: 'Smithville, TX' %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= profile_fields.label :current_city, 'Currently Lives', class: "col-sm-4 control-label" %>
+                <div class="col-sm-8">
+                  <%= profile_fields.text_field :current_city, class: 'form-control', placeholder: 'Houston, TX' %>
+                </div>
+              </div>
+
+            </section>
+
+            <section class="form-horizontal">
+              <h3>Contact Information</h3>
+              <div class="row about-info">
+                <label class="col-sm-4 text-right">Email</label>
+                <div class="col-sm-8"><%= @user.email %></div>
+              </div>
+
+              <div class="form-group">
+                <%= profile_fields.label :phone, class: "col-sm-4 control-label" %>
+                <div class="col-sm-8">
+                  <%= profile_fields.text_field :phone, class: 'form-control', placeholder: '504-555-1212' %>
+                </div>
+              </div>
+
+            </section>
+          </div>
+
+          <div class="col-sm-7">
+            <section class="form-horizontal">
+              <h3>Words to Live By</h3>
+              <div class="form-group">
+                <%= profile_fields.label :words_to_live_by, class: "sr-only" %>
+                <div class="col-sm-12">
+                  <%= profile_fields.text_area :words_to_live_by, class: 'form-control', placeholder: 'Not all those who wander are lost.' %>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-horizontal">
+              <h3>About Me</h3>
+              <div class="form-group">
+                <%= profile_fields.label :about, class: "sr-only" %>
+                <div class="col-sm-12">
+                  <%= profile_fields.text_area :about, rows: 6, class: 'form-control', placeholder: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' %>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div> <!-- row -->
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <%= profile_fields.submit 'Save Changes', class: 'btn btn-primary btn-block btn-lg' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</main>

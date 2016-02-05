@@ -27,7 +27,6 @@
     <%= field_with_errors(@user, :password_confirmation) %>
     <%= user_fields.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password' %>
   </div>
-  <%# TODO: activate remaining fields %>
   <%= user_fields.fields_for :profile do |profile_fields| %>
     <div class="form-group">
       <%= profile_fields.label :dob, 'Birthday' %><br>

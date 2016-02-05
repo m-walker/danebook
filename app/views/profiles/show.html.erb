@@ -25,17 +25,17 @@
 
             <div class="row about-info">
               <label class="col-sm-4 text-right">College</label>
-              <div class="col-sm-8">Athens Polytechnic</div>
+              <div class="col-sm-8"><%= @profile.try(:college) %></div>
             </div>
 
             <div class="row about-info">
               <label class="col-sm-4 text-right">Hometown</label>
-              <div class="col-sm-8">Athens, Greece</div>
+              <div class="col-sm-8"><%= @profile.try(:hometown) %></div>
             </div>
 
             <div class="row about-info">
               <label class="col-sm-4 text-right">Currently Lives</label>
-              <div class="col-sm-8">New Orleans, LA, USA</div>
+              <div class="col-sm-8"><%= @profile.try(:current_city) %></div>
             </div>
 
           </section>
@@ -51,7 +51,7 @@
 
             <div class="row about-info">
               <label class="col-sm-4 text-right">Telephone</label>
-              <div class="col-sm-8">504-555-1212</div>
+              <div class="col-sm-8"><%= @profile.try(:phone) %></div>
             </div>
 
           </section>
@@ -60,12 +60,12 @@
         <div class="col-sm-7 about-words">
           <section>
             <h3>Words to Live By</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><%= @profile.try(:words_to_live_by) %></p>
           </section>
 
           <section>
             <h3>About Me</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p><%= @profile.try(:about) %></p>
           </section>
         </div>
       </div>
