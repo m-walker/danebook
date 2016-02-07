@@ -21,6 +21,8 @@
   <div class="panel-footer post-footer">
     <a href="#" class="post-action"><i class="fa fa-thumbs-up"></i> Like</a>
     <a href="#" class="post-action"><i class="fa fa-comment"></i> Comment</a>
-    <a href="#" class="pull-right post-action"><i class="fa fa-trash"></i> Delete</a>
+    <% if @user == current_user %>
+      <%= link_to fa_icon('trash', text: 'Delete'), user_post_path(@user, post), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right post-action" %>
+    <% end %>
   </div>
 </div> <!-- panel -->
