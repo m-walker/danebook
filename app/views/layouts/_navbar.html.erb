@@ -18,29 +18,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <% if signed_in_user? %>
-        <form class="navbar-form" role="search">
-          <div class="form-group col-sm-6">
-            <label class="sr-only">Search</label>
-            <input type="text" class="form-control" placeholder="Search for Users" id="user-search">
-          </div>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to current_user.name, '#' %></li>
-          <li><%= link_to 'Log Out', logout_path, method: 'delete' %></li>
-        </ul>
+        <%= render 'layouts/signed_in_links' %>
       <% else %>
-        <%= form_tag login_path, class: "navbar-form navbar-right" do %>
-          <div class="form-group">
-            <%= label_tag :email %>
-            <%= text_field_tag :email, nil, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= label_tag :password %>
-            <%= password_field_tag :password, nil, class: "form-control" %>
-          </div>
-          <%= submit_tag 'Sign In', class: "btn btn-default" %>
-        <% end %>
+        <%= render 'layouts/signed_out_links' %>
       <% end %>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

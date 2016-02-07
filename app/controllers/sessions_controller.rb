@@ -4,9 +4,8 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       sign_in @user
-      redirect_to root_url, notice: "Successfully signed in!"
+      redirect_to user_posts_path(@user), notice: "Successfully signed in!"
     else
-      # TODO: Change to redirect to news feed
       redirect_to root_url, alert: "There was a problem signing you in. Unknown or incorrect email or password."
     end
   end

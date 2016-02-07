@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="text-center timeline-panel-heading">
+      Post
+    </h4>
+  </div>
+
+  <%= form_for [@user, @post] do |post_fields| %>
+    <div class="panel-body">
+      <%= post_fields.label :content, class: "sr-only" %>
+      <%# Using HTML5 validation (required) since re-render won't work with instance variables. %>
+      <%= post_fields.text_area :content, rows: 3, required: true, class: 'form-control', placeholder: "Tell the world something..." %>
+    </div> <!-- panel-body -->
+
+    <div class="panel-footer text-right">
+      <%= post_fields.submit "Post", class: 'btn btn-primary btn-sm' %>
+    </div>
+  <% end %>
+</div> <!-- panel -->

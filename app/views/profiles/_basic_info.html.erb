@@ -1,0 +1,19 @@
+<div class="row about-info">
+  <label class="col-sm-4 text-right">Birthday</label>
+  <div class="col-sm-8"><%= @profile.dob.stamp('January 1, 1980') %></div>
+</div>
+
+<div class="row about-info">
+  <label class="col-sm-4 text-right">College</label>
+  <div class="col-sm-8"><%= @profile.try(:college) %></div>
+</div>
+
+<div class="row about-info">
+  <label class="col-sm-4 text-right">Hometown</label>
+  <div class="col-sm-8"><%= @profile.try(:hometown) %></div>
+</div>
+
+<div class="row about-info">
+  <label class="col-sm-4 text-right">Currently Lives</label>
+  <div class="col-sm-8"><%= @profile.try(:current_city) %></div>
+</div>
