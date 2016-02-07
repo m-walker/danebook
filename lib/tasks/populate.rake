@@ -48,9 +48,15 @@ namespace :db do
       Post.populate(2..10) do |post|
         post.user_id = user.id
         post.content = Faker::Hipster.sentences(rand(1..4)).join(' ')
+        post.created_at = Faker::Time.between(DateTime.now - 3000, DateTime.now)
       end
 
     end # User
+
+    u = User.first
+    u.email = "siakaramalegos@gmail.com"
+    u.save
+
     puts "Done populating!"
 
 
