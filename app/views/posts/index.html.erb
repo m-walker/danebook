@@ -12,103 +12,12 @@
         </h4>
       </div>
       <div class="panel-body">
-
-        <div class="row">
-          <label class="col-sm-4 text-right">Birthday</label>
-          <div class="col-sm-8">January 1, 2000 BCE</div>
-        </div>
-
-        <div class="row">
-          <label class="col-sm-4 text-right">College</label>
-          <div class="col-sm-8">Athens Polytechnic</div>
-        </div>
-
-        <div class="row">
-          <label class="col-sm-4 text-right">Hometown</label>
-          <div class="col-sm-8">Athens, Greece</div>
-        </div>
-
-        <div class="row">
-          <label class="col-sm-4 text-right">Currently Lives</label>
-          <div class="col-sm-8">New Orleans, LA, USA</div>
-        </div>
-
+        <%= render 'profiles/basic_info' %>
       </div> <!-- panel-body -->
     </div> <!-- panel -->
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="text-center timeline-panel-heading">
-          Photos <small class="text-muted">(47)</small>
-        </h4>
-      </div>
-      <div class="panel-body" id="photos-body">
-
-        <div class="row">
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-          <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <a href="photos.html">See More Photos</a>
-          </div>
-        </div>
-      </div> <!-- panel-body -->
-    </div> <!-- panel -->
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="text-center timeline-panel-heading">
-          Friends <small class="text-muted">(447)</small>
-        </h4>
-      </div>
-      <div class="panel-body" id="photos-body">
-
-        <div class="row">
-          <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/100x100" class="img-thumbnail">
-            <a href="#">Apollo God of Music</a>
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/100x100" class="img-thumbnail">
-            <a href="#">Ares God of War</a>
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/100x100" class="img-thumbnail">
-            <a href="#">Aphrodite Goddess of Love</a>
-          </div>
-
-          <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/100x100" class="img-thumbnail">
-            <a href="#">Artemis Goddess of the Hunt</a>
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/100x100" class="img-thumbnail">
-            <a href="#">Zeus God of the Sky</a>
-          </div>
-          <div class="col-sm-4 text-center">
-            <img src="http://placehold.it/100x100" class="img-thumbnail">
-            <a href="#">Hades God of the Dead</a>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <a href="friends.html">See More Friends</a>
-          </div>
-        </div>
-
+    <%= render 'photos' %>
+    <%= render 'friends' %>
   </section>
 
 
@@ -131,6 +40,8 @@
         </div>
       </form>
     </div> <!-- panel -->
+
+    <%= render @posts %>
 
     <div class="panel panel-default">
       <div class="panel-body">

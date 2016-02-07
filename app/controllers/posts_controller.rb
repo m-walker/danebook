@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @profile = @user.profile
+    @posts = @user.posts.order(:created_at => :desc)
   end
 end

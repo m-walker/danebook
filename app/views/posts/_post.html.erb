@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <img src="http://placehold.it/80x80" class="img-thumbnail">
+      </div>
+      <div class="col-sm-10">
+        <h4><%= link_to @user.name, profile_path(@user) %></h4>
+        <small class="text-muted">Posted on <%= post.created_at.stamp('Thursday, October 21, 2015') %></small>
+      </div>
+    </div>
+
+    <div class="row post">
+      <div class="col-sm-12">
+        <p><%= post.content %></p>
+      </div>
+    </div>
+
+  </div> <!-- panel-body -->
+  <div class="panel-footer post-footer">
+    <a href="#" class="post-action"><i class="fa fa-thumbs-up"></i> Like</a>
+    <a href="#" class="post-action"><i class="fa fa-comment"></i> Comment</a>
+    <a href="#" class="pull-right post-action"><i class="fa fa-trash"></i> Delete</a>
+  </div>
+</div> <!-- panel -->
