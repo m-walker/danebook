@@ -18,6 +18,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem 'stamp'
 gem 'pg'
+gem 'faker'
+gem 'populator'
 
 group :production do
   gem 'rails_12factor'
