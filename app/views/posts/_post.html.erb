@@ -31,5 +31,8 @@
 
     <%= likes_summary(post) %>
 
+    <%= render partial: 'comments/form', locals: {post: post} %>
+
   </div>
+
 </div> <!-- panel -->

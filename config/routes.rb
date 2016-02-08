@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create] do
     resources :posts, only: [:index, :create, :destroy], path: :timeline do
       resource :like, only: [:create, :destroy]
+      resource :comment, only: [:create, :destroy]
     end
   end
 
