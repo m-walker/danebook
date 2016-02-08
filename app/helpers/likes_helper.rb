@@ -1,16 +1,35 @@
 module LikesHelper
 
+  # TODO: REFACTOR!!!
   def likes_summary(post)
-    likes = post.likes
-    string = ""
+    return "" if post.likes.empty?
 
-    if likes.count > 2
-      string = "<p>#{link_to likes.first.user.name, user_posts_path(likes.first.user)}, #{link_to likes.second.user.name, user_posts_path(likes.second.user)}, and #{likes.count - 2} others like this.</p>"
-    elsif likes.count == 2
-      string = "<p>#{link_to likes.first.user.name, user_posts_path(likes.first.user)} and #{link_to likes.second.user.name, user_posts_path(likes.second.user)} like this.</p>"
-    elsif likes.count == 1
-      string = "<p>#{link_to likes.first.user.name, user_posts_path(likes.first.user)} likes this.</p>"
+    users = post.likes.map{|like| like.user}
+    count = users.count
+    string = "<p>"
+    current_user_index = users.index{|user| user[:id] == current_user.id}
+
+    if current_user_index
+      users.delete_at(current_user_index)
+      string += "You"
+    else
+      user = users.pop
+      string += "#{link_to user.name, user_posts_path(user)}"
     end
+
+    user = users.pop
+
+    if count > 3
+      string += ", #{link_to user.name, user_posts_path(user)}, and #{count - 2} others like this."
+    elsif count == 2
+      string = " and #{link_to user.name, user_posts_path(user)} like this.</p>"
+    elsif string == "<p>You"
+      string += " like this."
+    else
+      string += " likes this."
+    end
+
+    string += "</p>"
 
     string.html_safe
   end
