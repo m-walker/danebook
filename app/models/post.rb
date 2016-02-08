@@ -3,4 +3,8 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :likeable, :dependent => :destroy
 
   validates :user_id, :content, presence: true
+
+  def liked_by?(user_id)
+    likes.where(user_id: user_id).present?
+  end
 end

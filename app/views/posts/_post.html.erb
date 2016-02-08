@@ -19,7 +19,11 @@
 
   </div> <!-- panel-body -->
   <div class="panel-footer post-footer">
-    <%= link_to fa_icon('thumbs-up', text: 'Like'), user_post_likes_path(@user, post), method: :post, class: 'post-action' %>
+    <% if post.liked_by?(current_user.id) %>
+      <%= link_to fa_icon('thumbs-up', text: 'Unlike'), user_post_like_path(@user, post), method: :delete, class: 'post-action' %>
+    <% else %>
+      <%= link_to fa_icon('thumbs-up', text: 'Like'), user_post_like_path(@user, post), method: :post, class: 'post-action' %>
+    <% end %>
     <a href="#" class="post-action"><i class="fa fa-comment"></i> Comment</a>
     <% if @user == current_user %>
       <%= link_to fa_icon('trash', text: 'Delete'), user_post_path(@user, post), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right post-action" %>

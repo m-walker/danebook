@@ -21,8 +21,8 @@ module LikesHelper
 
     if count > 3
       string += ", #{link_to user.name, user_posts_path(user)}, and #{count - 2} others like this."
-    elsif count == 2
-      string = " and #{link_to user.name, user_posts_path(user)} like this.</p>"
+    elsif count == 3
+      string += " and #{link_to user.name, user_posts_path(user)} like this.</p>"
     elsif string == "<p>You"
       string += " like this."
     else
