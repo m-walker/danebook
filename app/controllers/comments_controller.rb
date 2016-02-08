@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
     end
   end
 
+  # TODO: create destroy
+
   private
 
   def comment_params

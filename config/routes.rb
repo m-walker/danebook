@@ -2,10 +2,15 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
     resources :posts, only: [:index, :create, :destroy], path: :timeline do
-      resource :like, only: [:create, :destroy]
       resource :comment, only: [:create, :destroy]
     end
   end
+
+  post 'post/:post_id/like' => 'likes#create', as: :post_like
+  delete 'post/:post_id/like' => 'likes#destroy'
+
+  post 'comment/:comment_id/like' => 'likes#create', as: :comment_like
+  delete 'comment/:comment_id/like' => 'likes#destroy'
 
   resources :profiles, only: [:show, :edit, :update], path: :about
 
