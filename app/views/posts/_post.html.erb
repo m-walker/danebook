@@ -24,5 +24,8 @@
     <% if @user == current_user %>
       <%= link_to fa_icon('trash', text: 'Delete'), user_post_path(@user, post), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right post-action" %>
     <% end %>
+
+    <%= likes_summary(post) %>
+
   </div>
 </div> <!-- panel -->

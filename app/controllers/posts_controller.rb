@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @profile = @user.profile
-    @posts = @user.posts.order(:created_at => :desc)
+    @posts = @user.posts.includes(:likes => [:user]).order(:created_at => :desc)
     @post = @user.posts.build if @user == current_user
   end
 
