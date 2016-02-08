@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
-    resources :posts, only: [:index, :create, :destroy], path: :timeline
+    resources :posts, only: [:index, :create, :destroy], path: :timeline do
+      resources :likes, only: [:create, :destroy]
+    end
   end
 
   resources :profiles, only: [:show, :edit, :update], path: :about
