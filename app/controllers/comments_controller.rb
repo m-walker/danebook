@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :set_resource, only: [:create]
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
+    @comment = @resource.comments.build(comment_params)
     @comment.user_id = current_user.id
 
     if @comment.save
@@ -12,9 +12,25 @@ class CommentsController < ApplicationController
     end
   end
 
-  # TODO: create destroy
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+
+    if @comment.destroy
+      redirect_to :back, notice: "Comment deleted!"
+    else
+      redirect_to :back, alert: "Comment could not be deleted."
+    end
+  end
 
   private
+
+  def set_resource
+    if params[:comment_id]
+      @resource = Comment.find(params[:comment_id])
+    else
+      @resource = Post.find(params[:post_id])
+    end
+  end
 
   def comment_params
     params.require(:comment).permit(:content)

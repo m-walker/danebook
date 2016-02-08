@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
+    # TODO: refactor views to remove destroy post from here
     resources :posts, only: [:index, :create, :destroy], path: :timeline do
-      resource :comment, only: [:create, :destroy]
+      resource :comment, only: [:create]
     end
   end
 
-  post 'post/:post_id/like' => 'likes#create', as: :post_like
-  delete 'post/:post_id/like' => 'likes#destroy'
+  resources :posts, only: [:destroy] do
+    resource :like, only: [:create, :destroy]
+  end
 
-  post 'comment/:comment_id/like' => 'likes#create', as: :comment_like
-  delete 'comment/:comment_id/like' => 'likes#destroy'
+  resources :comments, only: [:destroy] do
+    resource :like, only: [:create, :destroy]
+  end
 
   resources :profiles, only: [:show, :edit, :update], path: :about
 
