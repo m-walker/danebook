@@ -5,6 +5,7 @@ module LikesHelper
     return "" if resource.likes.empty?
 
     users = resource.likes.map{|like| like.user}
+    # TODO: ...map(&:user)
     count = users.count
     string = ""
     current_user_index = users.index{|user| user[:id] == current_user.id}
