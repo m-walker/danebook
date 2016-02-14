@@ -1,9 +1,10 @@
-class Post < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   belongs_to :user
-  has_many :likes, as: :likeable, dependent: :destroy
-  has_many :comments, as: :commentable, dependent: :destroy
+  belongs_to :commentable, polymorphic: true
 
-  validates :user_id, :content, presence: true
+  has_many :likes, as: :likeable, dependent: :destroy
+
+  validates :content, presence: true
 
   def liked_by?(user_id)
     likes.where(user_id: user_id).present?

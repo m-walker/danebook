@@ -1,0 +1,10 @@
+<%= form_for Comment.new, url: user_post_comment_path(@user, post) do |comment_fields| %>
+  <div class="form-group">
+    <%= comment_fields.label :content, class: 'sr-only' %>
+    <%= comment_fields.text_area :content, rows: 3, required: true,class: 'form-control', placeholder: 'Write a comment...' %>
+  </div>
+  <p>
+    <a href="#">Cancel</a>
+    <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm pull-right' %>
+  </p>
+<% end %>

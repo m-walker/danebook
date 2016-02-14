@@ -1,0 +1,17 @@
+<article class="comment">
+  <div class="row">
+    <div class="col-sm-2">
+      <img src="http://placehold.it/80x80" class="img-thumbnail">
+    </div>
+    <div class="col-sm-10">
+      <h4><%= link_to comment.user.name, user_posts_path(comment.user) %> <small class="text-muted">Said on <%= comment.created_at.stamp('Wednesday, October 20, 2015') %></small></h4>
+      <p><%= comment.content %></p>
+      <p>
+        <% if comment.user == current_user %>
+          <%= link_to fa_icon('trash', text: 'Delete'), comment, method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right post-action" %>
+        <% end %>
+        <%= like_link(comment) %> <small class="text-muted"><%= likes_summary(comment) %></small></h4>
+      </p>
+    </div>
+  </div>
+</article>
