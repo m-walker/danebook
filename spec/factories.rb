@@ -13,12 +13,6 @@ FactoryGirl.define do
     end
   end
 
-  factory :profile do
-    dob Date.new(1980, 1, 1)
-    gender 'female'
-    user
-  end
-
   # factory :post do
   #   content "Lorem ipsum"
   #   user
