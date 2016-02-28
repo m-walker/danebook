@@ -24,4 +24,9 @@ FactoryGirl.define do
     # end
   end
 
+  factory :comment do
+    content "Bacon ipsum"
+    user
+  end
+
 end
