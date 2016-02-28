@@ -13,15 +13,15 @@ FactoryGirl.define do
     end
   end
 
-  # factory :post do
-  #   content "Lorem ipsum"
-  #   user
+  factory :post do
+    content "Lorem ipsum"
+    user
 
-  #   factory :post_with_comment do
-  #     after(:create) do |post|
-  #       create(:comment, user_id: user.id)
-  #     end
-  #   end
-  # end
+    # factory :post_with_comment do
+    #   after(:create) do |post|
+    #     create(:comment, user_id: user.id)
+    #   end
+    # end
+  end
 
 end
