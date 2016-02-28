@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   validates :password, length: { in: 8..24 }, allow_nil: true
   validates :first_name, :last_name, :email, presence: true
-  validates :email, uniqueness: true
+  validates_uniqueness_of :email, case_sensitive: false
 
   def name
     "#{first_name} #{last_name}"
