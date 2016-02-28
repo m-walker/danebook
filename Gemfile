@@ -29,6 +29,8 @@ group :development, :test do
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
@@ -37,5 +39,12 @@ group :development do
   gem 'quiet_assets'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara'
+  gem 'launchy'
 end
 
