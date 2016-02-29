@@ -11,21 +11,34 @@ FactoryGirl.define do
         create(:profile, user_id: user.id)
       end
     end
+
+    factory :user_with_posts do
+      after(:create) do |user|
+        create(:profile, user_id: user.id)
+        create(:post_with_comment, user_id: user.id)
+      end
+    end
+  end
+
+  factory :profile do
+    dob Date.new(1980, 1, 1)
+    gender "female"
+    user
   end
 
   factory :post do
-    content "Lorem ipsum"
+    sequence(:content) {|n| "Lorem ipsum #{n}"}
     user
 
-    # factory :post_with_comment do
-    #   after(:create) do |post|
-    #     create(:comment, user_id: user.id)
-    #   end
-    # end
+    factory :post_with_comment do
+      after(:create) do |post|
+        create(:comment, commentable_id: post.id, commentable_type: 'Post')
+      end
+    end
   end
 
   factory :comment do
-    content "Bacon ipsum"
+    content "Bacon"
     user
   end
 
