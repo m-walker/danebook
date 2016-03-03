@@ -23,6 +23,13 @@ class ApplicationController < ActionController::Base
     cookies.delete(:auth_token)
   end
 
+  def require_login
+    unless signed_in_user?
+      flash[:alert] = "Not authorized, please sign in!"
+      redirect_to root_url
+    end
+  end
+
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
