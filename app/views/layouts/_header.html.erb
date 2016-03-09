@@ -3,6 +3,9 @@
   <div class="row">
     <div class="col-sm-12">
       <%= image_tag "cover.jpg", id: "cover-photo", class: "img-responsive", alt: "User's cover photo" %>
+      <span id="user-name">
+        <%= @user.name %>
+      </span>
     </div>
   </div>
   <div class="row">
@@ -17,11 +20,11 @@
     <!-- TODO:  fix mobile version -->
     <div id="profile-nav" class="col-sm-9">
       <ul class="nav navbar-nav">
-        <li class="<%= 'active' if current_page?(user_posts_path(current_user)) %>">
-          <%= link_to 'Timeline', user_posts_path(current_user) %>
+        <li class="<%= 'active' if current_page?(user_posts_path(@user)) %>">
+          <%= link_to 'Timeline', user_posts_path(@user) %>
         </li>
-        <li class="<%= 'active' if current_page?(profile_path(current_user)) || current_page?(edit_profile_path(current_user)) %>">
-          <%= link_to 'About', profile_path(current_user) %>
+        <li class="<%= 'active' if current_page?(profile_path(@user)) || current_page?(edit_profile_path(current_user)) %>">
+          <%= link_to 'About', profile_path(@user) %>
         </li>
         <li class="<%= 'active' if current_page?(photos_path) %>">
           <%= link_to photos_path do %>
