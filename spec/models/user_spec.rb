@@ -5,7 +5,6 @@ describe User do
   context "validations" do
     let(:user){ build(:user) }
 
-    # TODO: Question - I still need this, right?
     it 'with a full name, email, and password is valid' do
       expect(user).to be_valid
     end
@@ -35,6 +34,8 @@ describe User do
     it{ is_expected.to have_many(:posts)}
     it{ is_expected.to have_many(:comments)}
     it{ is_expected.to have_many(:likes)}
+    it{ is_expected.to have_many(:accepted_friends)}
+    it{ is_expected.to have_many(:requested_friends)}
   end
 
   context 'instance methods' do
@@ -50,6 +51,21 @@ describe User do
 
     it 'should respond to :regenerate_auth_token' do
       expect(user_instance).to respond_to(:regenerate_auth_token)
+    end
+
+    context 'friends_with?' do
+      let(:user1){ create(:user) }
+      let(:user2){ create(:user) }
+
+      it 'should return true when friendship exists' do
+        friend = create(:friend, requester_id: user1.id, accepter_id: user2.id)
+        expect(user1.friends_with?(user2)).to be true
+        expect(user2.friends_with?(user1)).to be true
+      end
+
+      it 'should return false when friendship does not exist' do
+        expect(user1.friends_with?(user2)).to be false
+      end
     end
   end
 end

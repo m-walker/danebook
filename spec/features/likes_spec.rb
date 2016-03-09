@@ -30,7 +30,7 @@ feature "Liking" do
   end
 
   scenario "allows unliking of comments" do
-    within("article.comment"){ click_link "Like", match: :first}
+    within("article.comment"){ click_link "Like"}
     within("article.comment"){ click_link "Unlike" }
     expect(page).to have_content("Like removed!")
   end

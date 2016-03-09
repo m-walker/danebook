@@ -8,7 +8,7 @@ describe Like do
   end
 
   context 'validations' do
-    # TODO: this doesn't work - maybe because validation is on the associated resource? Switch to factory and old-fashioned model spec.
+    # TODO: this doesn't work - Switch to factory and old-fashioned model spec.
 
     # Trying to test this:
     # validates_uniqueness_of :user_id, :scope => [:likeable_id, :likeable_type]

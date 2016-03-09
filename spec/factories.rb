@@ -1,5 +1,10 @@
 FactoryGirl.define do
 
+  factory :friend do
+    accepter_id 2
+    requester_id 1
+  end
+
   factory :user do
     sequence(:first_name) {|n| "Foo#{n}"}
     last_name "Bar"
@@ -32,7 +37,7 @@ FactoryGirl.define do
 
     factory :post_with_comment do
       after(:create) do |post|
-        create(:comment, commentable_id: post.id, commentable_type: 'Post')
+        create(:comment, commentable_id: post.id, commentable_type: 'Post', user_id: post.user.id)
       end
     end
   end
