@@ -7,37 +7,19 @@
   <div class="panel-body" id="photos-body">
 
     <div class="row">
-      <div class="col-sm-4 text-center">
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <a href="#">Apollo God of Music</a>
-      </div>
-      <div class="col-sm-4 text-center">
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <a href="#">Ares God of War</a>
-      </div>
-      <div class="col-sm-4 text-center">
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <a href="#">Aphrodite Goddess of Love</a>
-      </div>
 
-      <div class="col-sm-4 text-center">
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <a href="#">Artemis Goddess of the Hunt</a>
-      </div>
-      <div class="col-sm-4 text-center">
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <a href="#">Zeus God of the Sky</a>
-      </div>
-      <div class="col-sm-4 text-center">
-        <img src="http://placehold.it/100x100" class="img-thumbnail">
-        <a href="#">Hades God of the Dead</a>
-      </div>
+      <% @user.all_friends.each do |friend| %>
+        <div class="col-sm-4 text-center">
+          <img src="http://placehold.it/100x100" class="img-thumbnail">
+          <%= link_to friend.name, profile_path(friend) %>
+        </div>
+      <% end %>
 
     </div>
 
     <div class="row">
       <div class="col-sm-12 text-center">
-        <a href="friends.html">See More Friends</a>
+        <%= link_to 'See More Friends', user_friends_path(@user) %>
       </div>
     </div>
   </div>
