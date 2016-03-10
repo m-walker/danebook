@@ -138,6 +138,19 @@ main {
 
 
     /*
+     * Search page custom style
+     */
+    .search-vertical-parent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 150px;
+    }
+
+
+
+
+    /*
      * Photos page custom style
      */
     .photo-box {

@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="col-sm-2">
+      <%# TODO: put real photo and friend count %>
+      <a href="#"><img src="http://placehold.it/150x150" class="img-thumbnail"></a>
+    </div>
+
+    <div class="col-sm-7">
+      <h4><%= link_to user.name, profile_path(user) %></h4>
+      <small class="text-muted"><%= user.friend_count %> Friends</small>
+      <br>
+      <br>
+      <p>
+        Currently Lives in <%= user.profile.current_city %><br>
+        From <%= user.profile.hometown %><br>
+        Born on <%= user.profile.dob.stamp('December 6, 1928') %>
+      </p>
+    </div>
+
+    <div class="col-sm-3 search-vertical-parent">
+      <% if current_user.friends_with?(user) %>
+        <p class="text-center text-muted">
+          You are already friends!
+        </p>
+      <% end %>
+      <!-- Friend/Unfriend buttons -->
+      <%= render partial: 'shared/friend_buttons', locals: {other_user: user, size: ''} %>
+    </div>
+  </div>
+</div>

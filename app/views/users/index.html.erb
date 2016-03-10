@@ -1,0 +1,16 @@
+<br><br>
+<main>
+  <p class="text-center text-muted">
+    <em>Showing <%= @users.count %> users whose first or last name contain "<%= params[:search] %>"</em>
+  </p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title text-center">
+        Search Results
+      </h2>
+    </div>
+    <div class="panel-body">
+      <%= render @users %>
+    </div>
+  </div>
+</main>

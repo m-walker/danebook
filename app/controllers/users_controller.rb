@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 
+  def index
+    if params[:search]
+      search_string = params[:search].downcase
+      @users = User.where("LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ?", "%#{search_string}%", "%#{search_string}%")
+    else
+      @users = User.all
+    end
+  end
+
   def new
     @user = User.new
     @user.build_profile

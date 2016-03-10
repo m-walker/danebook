@@ -1,9 +1,9 @@
-<form class="navbar-form" role="search">
+<%= form_tag(users_path, method: :get, role: "search", class: "navbar-form") do %>
   <div class="form-group col-sm-6">
-    <label class="sr-only">Search</label>
-    <input type="text" class="form-control" placeholder="Search for Users" id="user-search">
+    <%= label_tag :search, nil, class: "sr-only" %>
+    <%= text_field_tag :search, nil, class: "form-control", placeholder: 'Search for Users', id: "user-search" %>
   </div>
-</form>
+<% end %>
 <ul class="nav navbar-nav navbar-right">
   <li><%= link_to current_user.name, profile_path(current_user) %></li>
   <li><%= link_to 'Log Out', logout_path, method: 'delete' %></li>
