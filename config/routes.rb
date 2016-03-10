@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 
   get 'home' => 'users#new'
 
-  get 'friends' => 'static_pages#friends'
   get 'photos' => 'static_pages#photos'
 
   root 'users#new'

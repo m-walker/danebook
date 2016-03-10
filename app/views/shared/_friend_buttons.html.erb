@@ -1,4 +1,3 @@
-<%# TODO: make links live %>
 <% if current_user == other_user %>
 <% elsif current_user.friends_with?(other_user) %>
   <%= link_to 'Remove Friend', friend_path(current_friend: other_user.id), method: :delete, class: "btn btn-default #{size}" %>
