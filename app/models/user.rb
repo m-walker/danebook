@@ -36,4 +36,9 @@ class User < ActiveRecord::Base
   def friends_with?(user)
     requested_friends.where(id: user.id).any? || accepted_friends.where(id: user.id).any?
   end
+
+  # Returns an array of users instead of an Active Record relation
+  def all_friends
+    requested_friends + accepted_friends
+  end
 end

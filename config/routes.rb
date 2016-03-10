@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :create, :destroy], path: :timeline do
       resource :comment, only: [:create]
     end
+
+    get 'friends' => 'friends#index'
   end
 
   resources :posts, only: [:destroy] do
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, only: [:show, :edit, :update], path: :about
+  resource :friend, only: [:create, :destroy]
 
   resource :session, only: [:create, :destroy]
   post 'login' => 'sessions#create'

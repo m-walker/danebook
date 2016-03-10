@@ -1,0 +1,23 @@
+<%= render 'layouts/header' %>
+
+<!-- The main information pane contains a grid of friends -->
+<main>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title text-center">
+        Friends
+      </h2>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+
+        <% @user.all_friends.each do |friend| %>
+          <%= render partial: 'friend', locals: {friend: friend} %>
+        <% end %>
+
+      </div>
+    </div> <!-- panel-body -->
+  </div> <!-- panel -->
+
+</main>

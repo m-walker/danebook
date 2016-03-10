@@ -1,7 +1,7 @@
 <%# TODO: make links live %>
-<% if current_user == @user %>
-<% elsif current_user.friends_with?(@user) %>
-  <%= link_to 'Remove Friend', '#', class: 'btn btn-default btn-xs' %>
+<% if current_user == other_user %>
+<% elsif current_user.friends_with?(other_user) %>
+  <%= link_to 'Remove Friend', friend_path(current_friend: other_user.id), method: :delete, class: "btn btn-default #{size}" %>
 <% else %>
-  <%= link_to 'Add Friend', '#', class: 'btn btn-primary btn-xs' %>
+  <%= link_to 'Add Friend', friend_path(accepter_id: other_user.id), method: :post, class: "btn btn-primary #{size}" %>
 <% end %>

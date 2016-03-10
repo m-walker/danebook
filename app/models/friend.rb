@@ -4,4 +4,8 @@ class Friend < ActiveRecord::Base
 
   validates_presence_of :requester, :accepter
   validates_uniqueness_of :requester_id, scope: :accepter_id
+
+  def self.find_friendship(user1, user2)
+    where("(requester_id = ? AND accepter_id = ?) OR (requester_id = ? AND accepter_id = ?)", user1.id, user2.id, user2.id, user1.id).first
+  end
 end
