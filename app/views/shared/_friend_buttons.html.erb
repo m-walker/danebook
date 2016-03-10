@@ -1,0 +1,6 @@
+<% if current_user == @user %>
+<% elsif current_user.friends_with?(@user) %>
+  <%= link_to 'Remove Friend', '#', class: 'btn btn-default btn-xs' %>
+<% else %>
+  <%= link_to 'Add Friend', '#', class: 'btn btn-primary btn-xs' %>
+<% end %>

@@ -33,6 +33,7 @@ FactoryGirl.define do
 
   factory :post do
     sequence(:content) {|n| "Lorem ipsum #{n}"}
+    created_at Time.now
     user
 
     factory :post_with_comment do

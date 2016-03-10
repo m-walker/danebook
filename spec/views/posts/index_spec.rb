@@ -26,4 +26,5 @@ describe "posts/index.html.erb" do
 
     it "does not show new post input"
   end
+
 end
