@@ -8,6 +8,7 @@ describe Friend do
   end
 
   context "validations" do
+    subject { build(:friend) }
 
     it 'with an accepter and requester is valid' do
       created_users = create_pair(:user)
@@ -17,5 +18,6 @@ describe Friend do
 
     it { is_expected.to validate_presence_of(:requester) }
     it { is_expected.to validate_presence_of(:accepter) }
+    it { is_expected.to validate_uniqueness_of(:requester_id).scoped_to(:accepter_id)}
   end
 end

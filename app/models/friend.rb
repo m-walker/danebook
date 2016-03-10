@@ -3,4 +3,5 @@ class Friend < ActiveRecord::Base
   belongs_to :accepter, foreign_key: :accepter_id, class_name: 'User'
 
   validates_presence_of :requester, :accepter
+  validates_uniqueness_of :requester_id, scope: :accepter_id
 end
