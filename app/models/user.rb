@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :likes
   has_many :comments
-  has_many :accepted_friendings, foreign_key: :accepter_id, class_name: 'Friend'
+  has_many :accepted_friendings, foreign_key: :accepter_id, class_name: 'Friend', dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendings, source: :requester
-  has_many :requested_friendings, foreign_key: :requester_id, class_name: 'Friend'
+  has_many :requested_friendings, foreign_key: :requester_id, class_name: 'Friend', dependent: :destroy
   has_many :requested_friends, through: :requested_friendings, source: :accepter
 
   validates :password, length: { in: 8..24 }, allow_nil: true

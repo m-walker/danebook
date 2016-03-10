@@ -34,6 +34,8 @@ describe User do
     it{ is_expected.to have_many(:posts)}
     it{ is_expected.to have_many(:comments)}
     it{ is_expected.to have_many(:likes)}
+    it{ is_expected.to have_many(:accepted_friendings).dependent(:destroy)}
+    it{ is_expected.to have_many(:requested_friendings).dependent(:destroy)}
     it{ is_expected.to have_many(:accepted_friends)}
     it{ is_expected.to have_many(:requested_friends)}
   end
