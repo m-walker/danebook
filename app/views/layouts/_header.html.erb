@@ -37,7 +37,7 @@
         <li class="<%= 'active' if current_page?(user_friends_path(@user)) %>">
           <%= link_to user_friends_path(@user) do %>
           <%# TODO: update number  %>
-            Friends <small class="text-muted">(447)</small>
+            Friends <small class="text-muted">(<%= @user.friend_count %>)</small>
           <% end %>
         </li>
       </ul>

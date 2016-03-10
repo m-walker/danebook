@@ -7,7 +7,7 @@
       </div>
       <div class="col-sm-6 friend-vertical-parent">
         <h4><%= link_to friend.name, profile_path(friend) %></h4>
-        <small class="text-muted">320 Friends</small>
+        <small class="text-muted"><%= friend.friend_count %> Friends</small>
       </div>
       <div class="col-sm-3 friend-vertical-parent">
         <!-- Friend/Unfriend buttons -->

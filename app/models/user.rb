@@ -41,4 +41,8 @@ class User < ActiveRecord::Base
   def all_friends
     requested_friends + accepted_friends
   end
+
+  def friend_count
+    all_friends.size
+  end
 end
