@@ -29,8 +29,8 @@
         <li class="<%= 'active' if current_page?(profile_path(@user)) || current_page?(edit_profile_path(current_user)) %>">
           <%= link_to 'About', profile_path(@user) %>
         </li>
-        <li class="<%= 'active' if current_page?(photos_path) %>">
-          <%= link_to photos_path do %>
+        <li class="<%= 'active' if current_page?(user_photos_path(@user)) %>">
+          <%= link_to user_photos_path(@user) do %>
             Photos <small class="text-muted">(47)</small>
           <% end %>
         </li>

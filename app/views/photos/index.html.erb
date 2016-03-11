@@ -1,0 +1,21 @@
+<%= render 'layouts/header' %>
+
+<main>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title text-center">
+        Photos
+        <button data-toggle="modal" data-target="#newModal" class="btn btn-primary btn-sm pull-right">Add Photo!</button>
+      </h2>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+        <%= render @photos %>
+      </div>
+
+    </div> <!-- panel-body -->
+  </div> <!-- panel -->
+</main>
+
+<%= render 'new_modal' %>

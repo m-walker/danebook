@@ -20,6 +20,8 @@ gem 'stamp'
 gem 'pg'
 gem 'faker'
 gem 'populator'
+gem "paperclip", "~> 4.3"
+gem 'figaro'
 
 group :production do
   gem 'rails_12factor'
