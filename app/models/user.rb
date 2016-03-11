@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :likes
   has_many :comments
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_many :accepted_friendings, foreign_key: :accepter_id, class_name: 'Friend', dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendings, source: :requester
   has_many :requested_friendings, foreign_key: :requester_id, class_name: 'Friend', dependent: :destroy
@@ -45,5 +45,9 @@ class User < ActiveRecord::Base
 
   def friend_count
     all_friends.size
+  end
+
+  def photo_count
+    photos.count
   end
 end

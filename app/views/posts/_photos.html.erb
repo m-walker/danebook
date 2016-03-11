@@ -1,28 +1,24 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="text-center timeline-panel-heading">
-      Photos <small class="text-muted">(47)</small>
+      Photos <small class="text-muted">(<%= @user.photo_count %>)</small>
     </h4>
   </div>
   <div class="panel-body" id="photos-body">
 
     <div class="row">
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
-      <div class="col-sm-4 text-center"><img src="http://placehold.it/100x100" class="img-thumbnail"></div>
+      <% @user.photos.each do |photo| %>
+        <div class="col-sm-4 text-center">
+          <%= link_to user_photo_path(@user, photo) do %>
+            <%= image_tag photo.photo.url(:thumb), class: 'img-thumbnail' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div class="row">
       <div class="col-sm-12 text-center">
-        <a href="photos.html">See More Photos</a>
+        <%= link_to 'See More Photos', user_photos_path(@user) %>
       </div>
     </div>
   </div> <!-- panel-body -->
