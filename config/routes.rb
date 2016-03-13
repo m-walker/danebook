@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resource :comment, only: [:create]
     end
 
-    resources :photos, only: [:create, :index, :show]
+    resources :photos, only: [:create, :index, :show, :destroy]
     get 'friends' => 'friends#index'
   end
 

@@ -1,7 +1,7 @@
 <div class="col-sm-3 text-center photo-box">
-  <a href="#">
+  <%= link_to [@user, photo] do %>
     <div data-content="Uploaded <%= photo.created_at.stamp('January 1, 2015') %>" class="image">
       <%= image_tag photo.photo.url(:preview), class: 'img-thumbnail photo' %>
     </div>
-  </a>
+  <% end %>
 </div>

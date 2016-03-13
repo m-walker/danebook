@@ -1,0 +1,9 @@
+<%= image_tag @photo.photo.url(:timeline), class: 'img-responsive' %>
+
+<% if @user = current_user %>
+  <div class="text-right">
+    <%= link_to 'Set as profile photo', '#' %><br>
+    <%= link_to 'Set as cover photo', '#' %><br>
+    <%= link_to fa_icon('trash', text: 'Delete photo'), '#' %>
+  </div>
+<% end %>

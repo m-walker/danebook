@@ -1,2 +1,23 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<%= render 'layouts/header' %>
+
+<main>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title text-center">
+        Photos
+      </h2>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+          <%= render 'photo_panel' %>
+        </div>
+        <div class="col-sm-5">
+          <%# render 'comment_panel' %>
+        </div>
+      </div>
+
+    </div> <!-- panel-body -->
+  </div> <!-- panel -->
+</main>
