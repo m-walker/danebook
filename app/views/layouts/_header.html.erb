@@ -15,7 +15,7 @@
 
     <!-- Profile photo displays atop cover photo -->
     <div id="profile-pic-container" class="col-sm-3">
-      <%= image_tag "athena.jpg", id: "profile-photo", class: "img-responsive img-thumbnail" %>
+      <%= image_tag @user.profile_photo.photo.url(:preview), id: "profile-photo", class: "img-responsive img-thumbnail" %>
     </div>
 
     <!-- Links to Timeline, About, Photos, and Friends pages.  The "current" page is indicated via being grayed out.  Friends and photo counts indicated -->

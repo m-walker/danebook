@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create, :index] do
+  resources :users, only: [:new, :create, :index, :update] do
     # TODO: refactor views to remove destroy post from here
     resources :posts, only: [:index, :create, :destroy], path: :timeline do
       resource :comment, only: [:create]

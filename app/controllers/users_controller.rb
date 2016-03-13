@@ -30,6 +30,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    require_current_user
+
+    if @user.update(user_params)
+      redirect_to user_posts_url(@user), notice: "User successfully updated."
+    else
+      redirect_to user_posts_url(@user), alert: "Could not make requested change."
+    end
+  end
+
   private
 
   def user_params
@@ -39,6 +50,8 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
+      :cover_photo_id,
+      :profile_photo_id,
       { profile_attributes: [:gender, :dob] })
   end
 end
