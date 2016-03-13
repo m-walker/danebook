@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:destroy] do
     resource :comment, only: [:create, :destroy]
+    resource :like, only: [:create, :destroy]
   end
 
   resources :profiles, only: [:show, :edit, :update], path: :about

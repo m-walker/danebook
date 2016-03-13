@@ -37,8 +37,10 @@ module LikesHelper
     # TODO: refactor - maybe change up routes
     if resource.is_a? Post
       path = post_like_path(resource)
-    else
+    elsif resource.is_a? Comment
       path = comment_like_path(resource)
+    else
+      path = photo_like_path(resource)
     end
 
     if resource.liked_by?(current_user.id)

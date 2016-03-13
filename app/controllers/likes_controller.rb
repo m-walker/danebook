@@ -27,8 +27,10 @@ class LikesController < ApplicationController
   def set_resource
     if params[:comment_id]
       @resource = Comment.find(params[:comment_id])
-    else
+    elsif params[:post_id]
       @resource = Post.find(params[:post_id])
+    else
+      @resource = Photo.find(params[:photo_id])
     end
   end
 end
