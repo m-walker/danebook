@@ -22,6 +22,7 @@ gem 'faker'
 gem 'populator'
 gem "paperclip", "~> 4.3"
 gem 'figaro'
+gem 'aws-sdk', '< 2'
 
 group :production do
   gem 'rails_12factor'
