@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :comments
   has_many :photos, dependent: :destroy
+  belongs_to :cover_photo, foreign_key: :cover_photo_id, class_name: 'Photo'
+  belongs_to :profile_photo, foreign_key: :profile_photo_id, class_name: 'Photo'
+
   has_many :accepted_friendings, foreign_key: :accepter_id, class_name: 'Friend', dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendings, source: :requester
   has_many :requested_friendings, foreign_key: :requester_id, class_name: 'Friend', dependent: :destroy
