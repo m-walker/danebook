@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
+  before_action :require_login
 
   def create
     @user = User.find(params[:user_id])
+    require_current_user
     @photo = @user.photos.build(photo_params)
 
     if @photo.save
@@ -20,11 +22,13 @@ class PhotosController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
+    require_friends
     @photo = Photo.find(params[:id])
   end
 
   def destroy
     @user = User.find(params[:user_id])
+    require_current_user
     @photo = @user.photos.find(params[:id])
 
     if @photo.destroy

@@ -41,7 +41,13 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in_user?
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
+    unless @user == current_user
+      redirect_to root_url, alert: "You are not authorized to access."
+    end
+  end
+
+  def require_friends
+    unless current_user == @user || current_user.friends_with?(@user)
       redirect_to root_url, alert: "You are not authorized to access."
     end
   end

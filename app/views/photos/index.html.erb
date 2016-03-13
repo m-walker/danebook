@@ -5,7 +5,9 @@
     <div class="panel-heading">
       <h2 class="panel-title text-center">
         Photos
-        <button data-toggle="modal" data-target="#newModal" class="btn btn-primary btn-sm pull-right">Add Photo!</button>
+        <% if @user == current_user %>
+          <button data-toggle="modal" data-target="#newModal" class="btn btn-primary btn-sm pull-right">Add Photo!</button>
+        <% end %>
       </h2>
     </div>
     <div class="panel-body">
@@ -18,4 +20,6 @@
   </div> <!-- panel -->
 </main>
 
-<%= render 'new_modal' %>
+<% if @user == current_user %>
+  <%= render 'new_modal' %>
+<% end %>

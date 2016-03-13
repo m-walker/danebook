@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   end
 
   def new
+    if signed_in_user?
+      redirect_to user_posts_url(current_user)
+      return
+    end
     @user = User.new
     @user.build_profile
   end
