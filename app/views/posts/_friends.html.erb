@@ -10,7 +10,8 @@
 
       <% @user.all_friends.each do |friend| %>
         <div class="col-sm-4 text-center">
-          <img src="http://placehold.it/100x100" class="img-thumbnail">
+          <%= profile_photo(friend) %>
+          <!-- <img src="http://placehold.it/100x100" class="img-thumbnail"> -->
           <%= link_to friend.name, profile_path(friend) %>
         </div>
       <% end %>
