@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <div class="row">
+      <div class="col-sm-2">
+        <%= profile_photo(@user) %>
+      </div>
+      <div class="col-sm-10">
+        <h4><%= link_to @user.name, profile_path(@user) %></h4>
+        <small class="text-muted">Posted on <%= @photo.created_at.stamp('Thursday, October 21, 2015') %></small>
+      </div>
+    </div>
+
+  </div> <!-- panel-body -->
+  <div class="panel-footer post-footer">
+    <%# like_link(@photo) %>
+
+    <a href="#" class="post-action"><i class="fa fa-comment"></i> Comment</a>
+
+    <p><%# likes_summary(@photo) %></p>
+
+    <%= render @photo.comments.order(:created_at) %>
+
+    <%= render partial: 'comments/form', locals: {resource_path: photo_comment_path(@photo, @comment)} %>
+
+  </div>
+
+</div> <!-- panel -->

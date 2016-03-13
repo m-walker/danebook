@@ -23,14 +23,14 @@
 
     <a href="#" class="post-action"><i class="fa fa-comment"></i> Comment</a>
     <% if @user == current_user %>
-      <%= link_to fa_icon('trash', text: 'Delete'), user_post_path(@user, post), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right post-action" %>
+      <%= link_to fa_icon('trash', text: 'Delete'), post, method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right post-action" %>
     <% end %>
 
     <p><%= likes_summary(post) %></p>
 
     <%= render post.comments.order(:created_at) %>
 
-    <%= render partial: 'comments/form', locals: {post: post} %>
+    <%= render partial: 'comments/form', locals: {resource_path: post_comment_path(post, @comment)} %>
 
   </div>
 

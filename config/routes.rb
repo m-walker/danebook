@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :index, :update] do
-    # TODO: refactor views to remove destroy post from here
-    resources :posts, only: [:index, :create, :destroy], path: :timeline do
-      resource :comment, only: [:create]
-    end
-
-    resources :photos, only: [:create, :index, :show, :destroy]
+    resources :posts, only: [:index, :create], path: :timeline
+    resources :photos, only: [:create, :index, :show]
     get 'friends' => 'friends#index'
   end
 
   resources :posts, only: [:destroy] do
+    resource :comment, only: [:create]
     resource :like, only: [:create, :destroy]
   end
 
   resources :comments, only: [:destroy] do
     resource :like, only: [:create, :destroy]
+  end
+
+  resources :photos, only: [:destroy] do
+    resource :comment, only: [:create, :destroy]
   end
 
   resources :profiles, only: [:show, :edit, :update], path: :about

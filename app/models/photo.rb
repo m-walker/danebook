@@ -2,6 +2,7 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   has_one :cover_photo, foreign_key: :cover_photo_id, class_name: 'User', dependent: :nullify
   has_one :profile_photo, foreign_key: :profile_photo_id, class_name: 'User', dependent: :nullify
+  has_many :comments, as: :commentable, dependent: :destroy
 
   # http://www.imagemagick.org/script/command-line-processing.php#geometry
   # timeline preserves width

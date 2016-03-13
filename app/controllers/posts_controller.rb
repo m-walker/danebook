@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @profile = @user.profile
     @posts = @user.posts.includes(:likes => [:user], :comments => [:user]).order(:created_at => :desc)
     @post = @user.posts.build if @user == current_user
+    @comment = Comment.new
   end
 
   def create

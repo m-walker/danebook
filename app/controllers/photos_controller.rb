@@ -24,12 +24,11 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     require_friends
     @photo = Photo.find(params[:id])
+    @comment = Comment.new
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    require_current_user
-    @photo = @user.photos.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
 
     if @photo.destroy
       redirect_to user_photos_url(@user), notice: 'Photo successfully deleted.'

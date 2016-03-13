@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates :password, length: { in: 8..24 }, allow_nil: true
   validates :first_name, :last_name, :email, presence: true
   validates_uniqueness_of :email, case_sensitive: false
+  # TODO: validation that profile and cover photos in user photos
+  # validates :cover_photo, :profile_photo, inclusion: { in: self.photos}
 
   def name
     "#{first_name} #{last_name}"
