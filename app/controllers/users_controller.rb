@@ -34,6 +34,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     require_current_user
 
+    # TODO: this does not look kosher
+    if params[:user][:profile_photo_id]
+      if @user.photos.where(id: params[:user][:profile_photo_id]).empty?
+        redirect_to user_photos_url(@user), alert: "Invalid photo selection."
+      end
+    end
+
+    if params[:user][:cover_photo_id]
+      if @user.photos.where(id: params[:user][:cover_photo_id]).empty?
+        redirect_to user_photos_url(@user), alert: "Invalid photo selection."
+      end
+    end
+
     if @user.update(user_params)
       redirect_to user_posts_url(@user), notice: "User successfully updated."
     else
