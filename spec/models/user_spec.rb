@@ -32,6 +32,9 @@ describe User do
     it{ is_expected.to have_one(:profile).dependent(:destroy)}
     it{ is_expected.to accept_nested_attributes_for(:profile)}
     it{ is_expected.to have_many(:posts)}
+    it{ is_expected.to have_many(:photos)}
+    it{ is_expected.to belong_to(:profile_photo)}
+    it{ is_expected.to belong_to(:cover_photo)}
     it{ is_expected.to have_many(:comments)}
     it{ is_expected.to have_many(:likes)}
     it{ is_expected.to have_many(:accepted_friendings).dependent(:destroy)}

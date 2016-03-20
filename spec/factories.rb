@@ -1,7 +1,6 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
-  factory :photo do
-    user nil
-  end
 
   factory :friend do
     accepter_id 2
@@ -48,6 +47,11 @@ FactoryGirl.define do
 
   factory :comment do
     content "Bacon"
+    user
+  end
+
+  factory :photo do
+    photo { fixture_file_upload(Rails.root.join('spec', 'support', 'test.jpg'), 'image/jpg') }
     user
   end
 

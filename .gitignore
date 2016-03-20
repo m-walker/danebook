@@ -21,3 +21,5 @@
 
 # Ignore photos in development environment
 /public/system/photos/photos/
+
+/spec/.DS_Store
