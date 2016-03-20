@@ -9,6 +9,7 @@ class Photo < ActiveRecord::Base
   # timeline preserves width
   has_attached_file :photo, styles: { timeline: "600>", thumb: "100x100#", profile_thumb: "80x80#", preview: "200x200#", cover: "1138x400#" }, default_url: "/images/missing_:style.jpg"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+  # TODO: set max file size
 
   def liked_by?(user_id)
     likes.where(user_id: user_id).present?

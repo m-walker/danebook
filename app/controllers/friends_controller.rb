@@ -6,6 +6,7 @@ class FriendsController < ApplicationController
   end
 
   def create
+    # TODO: check if already friends first
     accepter = User.find(params[:accepter_id])
     friendship = Friend.new(requester: current_user, accepter: accepter)
 

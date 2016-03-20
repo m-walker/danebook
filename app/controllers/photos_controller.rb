@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.find(params[:id])
 
     if @photo.destroy
-      redirect_to user_photos_url(@user), notice: 'Photo successfully deleted.'
+      redirect_to user_photos_url(current_user), notice: 'Photo successfully deleted.'
     else
       redirect_to @photo, alert: 'Could not delete photo.'
     end
