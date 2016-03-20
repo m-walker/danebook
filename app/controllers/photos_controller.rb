@@ -2,12 +2,10 @@ class PhotosController < ApplicationController
   before_action :require_login
 
   def create
-    @user = User.find(params[:user_id])
-    require_current_user
-    @photo = @user.photos.build(photo_params)
+    @photo = current_user.photos.build(photo_params)
 
     if @photo.save
-      redirect_to user_photos_path(@user), notice: 'Photo successfully added'
+      redirect_to user_photos_path(current_user), notice: 'Photo successfully added'
     else
       flash.now[:alert] = 'There was a problem adding the photo.'
       render :new

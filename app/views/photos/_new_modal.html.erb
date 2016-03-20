@@ -7,7 +7,7 @@
         <h4 class="modal-title text-center" id="myModalLabel">Add a New Photo</h4>
       </div>
       <div class="modal-body">
-        <%= form_for [@user, @photo] do |photo_fields| %>
+        <%= form_for @photo do |photo_fields| %>
           <div class="form-group">
             <%= photo_fields.label :photo, 'Upload from your computer' %>
             <%= photo_fields.file_field :photo %>

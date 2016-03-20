@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :index, :update] do
     resources :posts, only: [:index, :create], path: :timeline
-    resources :photos, only: [:create, :index, :show]
+    resources :photos, only: [:index, :show]
     get 'friends' => 'friends#index'
   end
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
 
-  resources :photos, only: [:destroy] do
+  resources :photos, only: [:create, :destroy] do
     resource :comment, only: [:create, :destroy]
     resource :like, only: [:create, :destroy]
   end
