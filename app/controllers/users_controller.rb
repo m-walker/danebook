@@ -22,6 +22,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      User.send_welcome_email(@user.id)
+
       sign_in(@user)
       redirect_to @user.profile, notice: 'You successfully signed up! Now you can add more info to your profile.'
     else
