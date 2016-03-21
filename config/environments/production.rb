@@ -10,6 +10,8 @@ Rails.application.configure do
     }
   }
 
+  config.action_mailer.default_url_options = { host: 'olympusbook.herokuapp.com' }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
