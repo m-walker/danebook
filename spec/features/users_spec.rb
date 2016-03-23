@@ -4,7 +4,7 @@ feature "User management" do
 
   before{ visit root_path }
 
-  scenario "allows sign up and goes to profile page" do
+  scenario "allows sign up, goes to profile page, and sends email" do
     fill_in "First name", with: "Foo"
     fill_in "Last name", with: "Bar"
     fill_in "user_email", with: "foo@bar.com"
