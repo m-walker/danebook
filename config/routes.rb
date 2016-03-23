@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :index, :update] do
-    resources :posts, only: [:index, :create], path: :timeline
+    resources :posts, only: [:index, :create, :show], path: :timeline
     resources :photos, only: [:index, :show]
+    resources :comments, only: [:show]
     get 'friends' => 'friends#index'
   end
 

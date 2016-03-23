@@ -1,0 +1,9 @@
+<h1><%= @comment.user.name%> made a comment on your <%= @comment.commentable_type %></h1>
+
+<p>
+  <% if @resource.is_a? Comment %>
+    To see it, click <%= link_to 'here', polymorphic_url([@user, @resource]) %>
+  <% else %>
+    To see it, click <%= link_to 'here', url_for([@user, @resource]) %>
+  <% end %>
+</p>

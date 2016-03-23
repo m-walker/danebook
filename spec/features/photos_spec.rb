@@ -16,4 +16,7 @@ feature "Photos" do
     expect(page.current_path).to eq(user_photos_path(user))
     expect(user.photos.count).to eq(1)
   end
+
+  # TODO: do this
+  scenario "fails gracefully with wrong file type"
 end

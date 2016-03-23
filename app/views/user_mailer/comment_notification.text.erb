@@ -1,0 +1,7 @@
+<%= @comment.user.name%> made a comment on your <%= @comment.commentable_type %>
+
+<% if @resource.is_a? Comment %>
+  To see it, click here: <%= polymorphic_url([@user, @resource]) %>
+<% else %>
+  To see it, click here: <%= url_for([@user, @resource]) %>
+<% end %>
