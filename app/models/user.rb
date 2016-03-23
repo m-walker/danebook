@@ -25,11 +25,11 @@ class User < ActiveRecord::Base
   # validates :cover_photo, :profile_photo, inclusion: { in: self.photos}
 
   def newsfeed_items
-    Post.where(user: [all_friends, self]).order(:created_at => :desc).limit(30)
+    Post.where(user: (all_friends << self)).order(:created_at => :desc).limit(30)
   end
 
   def recent_friend_posts
-    Post.where(user: [all_friends]).order(:created_at => :desc).limit(10)
+    Post.where(user: all_friends).order(:created_at => :desc).limit(10)
   end
 
   def name

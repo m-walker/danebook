@@ -58,6 +58,14 @@ describe User do
       expect(user_instance).to respond_to(:regenerate_auth_token)
     end
 
+    it 'should respond to :newsfeed_items' do
+      expect(user_instance).to respond_to(:newsfeed_items)
+    end
+
+    it 'should respond to :recent_friend_posts' do
+      expect(user_instance).to respond_to(:recent_friend_posts)
+    end
+
     context 'friends_with?' do
       let(:user1){ create(:user) }
       let(:user2){ create(:user) }
