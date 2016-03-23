@@ -1,15 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
 
-    <div class="row">
-      <div class="col-sm-2">
-        <%= profile_photo(post.user) %>
-      </div>
-      <div class="col-sm-10">
-        <h4><%= link_to post.user.name, profile_path(post.user) %></h4>
-        <small class="text-muted">Posted on <%= post.created_at.stamp('Thursday, October 21, 2015') %></small>
-      </div>
-    </div>
+    <%= render partial: 'posts/author', locals: { post: post, photo_size: 'small' } %>
 
     <div class="row post">
       <div class="col-sm-12">

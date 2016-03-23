@@ -1,0 +1,9 @@
+<div class="row">
+  <div class=<%= user_photo_column_width(photo_size) %>>
+    <%= profile_photo(post.user) %>
+  </div>
+  <div class=<%= user_name_column_width(photo_size) %>>
+    <h4><%= link_to post.user.name, profile_path(post.user) %></h4>
+    <small class="text-muted">Posted on <%= post.created_at.stamp('Thursday, October 21, 2015') %></small>
+  </div>
+</div>

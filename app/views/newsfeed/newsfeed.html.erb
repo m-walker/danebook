@@ -11,8 +11,17 @@
         <p><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></p>
       </div>
     </article>
+    <br>
 
+    <article>
+      <h3>Recently Active</h3>
+      <% current_user.recent_friend_posts.each do |post| %>
+        <%= render partial: 'posts/author', locals: { post: post, photo_size: 'medium' } %>
+        <br>
+      <% end %>
 
+      <h3 class="text-center"><%= link_to "See All Your Friends", user_friends_path(current_user) %></h3>
+    </article>
   </section>
 
   <section class="col-sm-8">
