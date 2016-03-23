@@ -1,0 +1,22 @@
+<br>
+
+<main class="row">
+  <section class="col-sm-4">
+    <article class="row">
+      <div class="col-xs-4">
+        <%= profile_photo(current_user) %>
+      </div>
+      <div class="col-xs-8">
+        <h3><%= link_to current_user.name, user_posts_path(current_user) %></h3>
+        <p><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></p>
+      </div>
+    </article>
+
+
+  </section>
+
+  <section class="col-sm-8">
+    <%= render 'posts/form' %>
+    <%= render @posts %>
+  </section>
+</main>

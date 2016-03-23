@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'newsfeed' => 'newsfeed#newsfeed'
+
   resources :users, only: [:new, :create, :index, :update] do
     resources :posts, only: [:index, :create, :show], path: :timeline
     resources :photos, only: [:index, :show]

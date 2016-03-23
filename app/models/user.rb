@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   # TODO: validation that profile and cover photos in user photos
   # validates :cover_photo, :profile_photo, inclusion: { in: self.photos}
 
+  def newsfeed_items
+    Post.where(user: [all_friends, self]).order(:created_at => :desc)
+  end
+
   def name
     "#{first_name} #{last_name}"
   end

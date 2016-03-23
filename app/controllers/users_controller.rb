@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def new
     if signed_in_user?
-      redirect_to user_posts_url(current_user)
+      redirect_to newsfeed_url
       return
     end
     @user = User.new
