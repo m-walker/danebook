@@ -21,6 +21,6 @@ class Comment < ActiveRecord::Base
       resource = Comment.find(resource_id)
     end
 
-    UserMailer.comment_notification(resource, comment).deliver
+    UserMailer.comment_notification(resource, comment).deliver_now
   end
 end

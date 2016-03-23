@@ -19,4 +19,13 @@ describe Comment do
       expect(comment).to respond_to(:liked_by?)
     end
   end
+
+  context "class methods" do
+    let(:user){ create(:user_with_posts) }
+    let(:post){ user.posts.first }
+
+    it "should send an email when :send_notification called" do
+      expect{Comment.send_notification(post.id, post.comments.first.id)}.to change{ ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
 end
