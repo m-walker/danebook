@@ -24,6 +24,7 @@ feature "User management" do
     # expect(current_path).to eq(profile_path)
 
     expect(page).to have_content "About Foo Bar"
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
 
   scenario "does not allow sign up with no info" do
