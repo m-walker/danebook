@@ -73,4 +73,12 @@ describe User do
       end
     end
   end
+
+  context "class methods" do
+    let(:user){ create(:user) }
+
+    it "should send a welcome email when :send_welcome_email called" do
+      expect{User.send_welcome_email(user.id)}.to change{ ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
 end
