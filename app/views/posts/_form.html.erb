@@ -5,7 +5,7 @@
     </h4>
   </div>
 
-  <%= form_for [@user, @post] do |post_fields| %>
+  <%= form_for [current_user, current_user.posts.build], id: 'post-form', remote: true do |post_fields| %>
     <div class="panel-body">
       <%= post_fields.label :content, class: "sr-only" %>
       <%# Using HTML5 validation (required) since re-render won't work with instance variables. %>

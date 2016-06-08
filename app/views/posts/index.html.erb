@@ -24,6 +24,8 @@
   <!-- Right column of timeline -->
   <section class="col-sm-7">
     <%= render 'form' if @user == current_user %>
-    <%= render @posts %>
+    <div id="posts">
+      <%= render @posts %>
+    </div>
   </section>
 </main>

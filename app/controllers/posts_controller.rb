@@ -19,9 +19,17 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to user_posts_path(current_user), notice: "Posted!"
+      flash.now[:notice] = "Posted!"
+      respond_to do |format|
+        format.js {}
+      end
     else
-      redirect_to user_posts_path(current_user), alert: "Could not save post."
+      # TODO: how should I think about this? Want to constrain to only JS
+      flash[:alert] = "Could not save post."
+      respond_to do |format|
+        format.html { redirect_to user_posts_path(current_user) }
+        format.js {}
+      end
     end
   end
 

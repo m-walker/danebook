@@ -1,0 +1,17 @@
+// Clear form
+$('textarea#post_content').val(null);
+
+// Add post to top of posts
+var $post = $("<%= j render(@post) %>").hide();
+$('#posts').prepend($post);
+$post.slideDown(350);
+
+// Re-render flash
+$('#flash-messages')
+  .html("<%= j( render partial: 'layouts/messages' ) %>")
+  .show();
+
+// Fade out flash message
+window.setTimeout(function(){
+  $('#flash-messages').fadeOut(350);
+}, 3000);

@@ -1,4 +1,4 @@
-<%= form_for @comment, url: resource_path do |comment_fields| %>
+<%= form_for [post, post.comments.build] do |comment_fields| %>
 <%# form_for Comment.new, url: user_post_comment_path(@user, post) do |comment_fields| %>
   <div class="form-group">
     <%= comment_fields.label :content, class: 'sr-only' %>

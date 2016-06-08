@@ -22,7 +22,7 @@ class FriendsController < ApplicationController
     friendship = Friend.find_friendship(current_user, current_friend)
 
     if friendship.destroy
-      redirect_to :back, notice: "Successfully unfriended #{current_friend.name}"
+      redirect_to :back, success: "Successfully unfriended #{current_friend.name}"
     else
       redirect_to :back, alert: "Cound not remove friendship."
     end
