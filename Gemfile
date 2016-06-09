@@ -34,6 +34,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
+  gem "selenium-webdriver"
 end
 
 group :development do
@@ -50,5 +51,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'capybara'
   gem 'launchy'
+  gem 'connection_pool'
 end
 

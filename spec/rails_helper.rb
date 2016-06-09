@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'capybara/rails'
 require "paperclip/matchers"
+require 'selenium/webdriver'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -29,6 +30,18 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+# Solution for using transactional fixtures with JS-enabled tests
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || ConnectionPool::Wrapper.new(:size => 1) { retrieve_connection }
+  end
+end
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -61,6 +74,7 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
   config.include FactoryGirl::Syntax::Methods
   config.include LoginMacros
+  config.include WaitForAjax, type: :feature
 end
 
 Shoulda::Matchers.configure do |config|
