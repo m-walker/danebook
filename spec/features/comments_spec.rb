@@ -9,7 +9,7 @@ feature "Commenting" do
     visit user_posts_path(user_id: user.id)
   end
 
-  scenario "allows commenting on posts" do
+  scenario "allows commenting on posts", js: true do
     fill_in "comment_content", with: "Moar bacon"
     click_button "Comment"
     expect(page).to have_content("Comment successfully saved!")

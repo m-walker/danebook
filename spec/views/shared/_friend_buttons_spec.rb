@@ -8,6 +8,12 @@ describe "shared/_friend_buttons.html.erb" do
   before do
     @user = user
     friend = create(:friend, requester_id: user2.id, accepter_id: user.id)
+    def view.other_user
+      @user
+    end
+    def view.size
+      'btn-sm'
+    end
   end
 
   context "when friends" do
@@ -20,7 +26,7 @@ describe "shared/_friend_buttons.html.erb" do
 
     it 'shows unfriend button' do
       render
-      expect(rendered).to have_selector("a[href=\"#\"]", :text => "Remove Friend")
+      expect(rendered).to have_selector("a", :text => "Remove Friend")
     end
   end
 
@@ -34,7 +40,7 @@ describe "shared/_friend_buttons.html.erb" do
 
     it 'shows friend button' do
       render
-      expect(rendered).to have_selector("a[href=\"#\"]", :text => "Add Friend")
+      expect(rendered).to have_selector("a", :text => "Add Friend")
     end
   end
 
@@ -48,8 +54,8 @@ describe "shared/_friend_buttons.html.erb" do
 
     it 'shows no friending button' do
       render
-      expect(rendered).not_to have_selector("a[href=\"#\"]", :text => "Remove Friend")
-      expect(rendered).not_to have_selector("a[href=\"#\"]", :text => "Add Friend")
+      expect(rendered).not_to have_selector("a", :text => "Remove Friend")
+      expect(rendered).not_to have_selector("a", :text => "Add Friend")
     end
   end
 end

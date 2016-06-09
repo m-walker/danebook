@@ -5,6 +5,7 @@ feature "User management" do
   before{ visit root_path }
 
   scenario "allows sign up, goes to profile page, and sends email" do
+    initial_email_count = ActionMailer::Base.deliveries.count
     fill_in "First name", with: "Foo"
     fill_in "Last name", with: "Bar"
     fill_in "user_email", with: "foo@bar.com"
@@ -24,7 +25,7 @@ feature "User management" do
     # expect(current_path).to eq(profile_path)
 
     expect(page).to have_content "About Foo Bar"
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
+    expect(ActionMailer::Base.deliveries.count).to eq(initial_email_count + 1)
   end
 
   scenario "does not allow sign up with no info" do

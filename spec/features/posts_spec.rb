@@ -9,8 +9,9 @@ feature "Posting" do
     visit user_posts_path(user_id: user.id)
   end
 
-  scenario "allows posting on own page" do
+  scenario "allows posting on own page", js: true do
     fill_in "post_content", with: "Hipster ipsum"
+    page.execute_script "window.scrollBy(0,300)"
     click_button "Post"
     expect(page).to have_content("Posted!")
   end
