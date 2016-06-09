@@ -7,6 +7,15 @@ body {
   padding-top: 50px;
 }
 
+#flash-messages {
+  position: absolute;
+  top: 65px;
+  left: 5%;
+  width: 90%;
+  text-align: center;
+  z-index: 2;
+}
+
 #user_profile_attributes_dob_2i {
   width: 42%;
   display: inline-block;
