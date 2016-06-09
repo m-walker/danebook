@@ -1,0 +1,18 @@
+// Clear form
+$("#post-<%= @comment.commentable.id %>-comments form textarea#comment_content").val(null);
+
+// Add comment to top of comments
+var $comment = $("<%= j render(@comment) %>").hide();
+$("#post-<%= @comment.commentable.id %>-comments").prepend($comment);
+$comment.slideDown(350);
+
+// TODO: move to partial
+// Re-render flash
+$('#flash-messages')
+  .html("<%= j( render partial: 'layouts/messages' ) %>")
+  .show();
+
+// Fade out flash message
+window.setTimeout(function(){
+  $('#flash-messages').fadeOut(350);
+}, 3000);

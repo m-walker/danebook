@@ -17,8 +17,12 @@ class CommentsController < ApplicationController
       unless @comment.user == @resource.user
         Comment.send_notification(@resource.id, @comment.id)
       end
-      redirect_to :back, notice: "Comment successfully saved!"
+      flash.now[:notice] = "Comment successfully saved!"
+      respond_to do |format|
+        format.js {}
+      end
     else
+      # TODO: how should I think about this? Want to constrain to only JS
       redirect_to :back, alert: "Comment could not be saved."
     end
   end

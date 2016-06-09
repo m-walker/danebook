@@ -20,8 +20,10 @@
 
     <p><%= likes_summary(post) %></p>
 
-    <%= render post.comments.order(:created_at) %>
-    <%= render partial: 'comments/form', locals: { post: post } %>
+    <div id="post-<%= post.id %>-comments">
+      <%= render post.comments.order(:created_at) %>
+      <%= render partial: 'comments/form', locals: { post: post } %>
+    </div>
 
   </div>
 
